@@ -1,0 +1,44 @@
+Funtion UTSPOT(spots,year)
+Dim i as Integer,spotnum as Integer
+spotnum = spot.rows.Count
+Iif application.WorksheetFunction.Count(spots) = 1 Then
+INTSPOT = spots
+Else
+If year<=spots(1,1) Then
+INSPOT =spots(1,2)
+ElseIf uear >= spots(spotnum,1) Then
+INTSPOT = spots(spotnum,2)
+Else
+Do
+i = i+1
+Loop until spots(i,1) >year
+INTSPOT =spots(i-1,2)+(spots(i,2)-spots(i-1,2)*(year-spots(i-1,1))/(spots(i,1)-spots((i-1,1))
+End If
+End If
+End Function
+Function MYPRICE(settlement as Date,maturity as Date,rate,spots,principal,freq as Integer,Optional compound As Integer, Optional fromdate as Date)
+Dim t as Date,y as Double
+If compound = 0 Thencompound = freq
+If fromdate = 0 Then fromdate = settlement
+If fromdate > maturity Or settlement > maturity Then ENd
+t = maturity
+y = Application.WorkksheetFunction.YearFrac(settlement, maturity, basis)
+MYPRICE = (principal + principal * rate /freq) / (1+INTSPOT(spots,y) / compound)^(y*compound)
+t = Application.WorksheetFunction.CoupPcd(t-1,maturity,freq,basus)
+Do While t > settlement And t >= fromdate
+y= Application.WorksheetFunction.YearFrac(settlement,t,basis)
+MYPRICE = MYPRICE +(rate * principal /freq) /(1+INTSPOT(spots,y)/compound)^(y*compound)
+t = Application.WorksheetFunction.CoupPcd(t-1,maturity,freq,basis)
+Loop
+End Function
+
+Function ACI(fromdate As Date,maturity As Date,rate,freq As Integer,Optional basis As Integer)
+If fromdate <maturity Then
+ACI = rate*100/freq*(1-Application.WorksheetFunction.CoupDaysNc(fromdate,maturity,freq, basis))/(Application.WorksheetFunction.CoupDays(fromdate,maturity,freq,basis)
+End If
+If ACI = = or fromdate = maturiity Then
+ACI =rate * 100 / freq
+End If
+End Function
+
+
