@@ -1,0 +1,5 @@
+trade_date,symbol,broker,vol,vol_chg,long_hld,short_hld,fut_code
+20220701,CU2212,X,60,-50,,,CU
+20220701,CU2211,O,224,17,,,CU
+20220701,CU2211,L,159,44,450,1550,CU
+20220701,CU2211,S,134,-25,1067,1648,CU
